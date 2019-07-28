@@ -46,10 +46,15 @@ class BudgetServiceTest < Minitest::Test
     budget_should_be 30.0, date_of('20200331'), date_of('20200501')
   end
 
+  def test_invalid_period
+    given_budgets Budget.new('202004', 30)
+    budget_should_be 0.0, date_of('20200430'), date_of('20200401')
+  end
+
   private
 
   def given_budgets(*budgets)
-    mock.proxy(@repo).all_budgets { budgets }
+    stub(@repo).all_budgets { budgets }
   end
 
   def budget_should_be(expected, start_date, end_date)

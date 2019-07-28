@@ -8,6 +8,8 @@ class BudgetService
 
   def query(start_date, end_date)
     period = Period.new(start_date, end_date)
+    return 0.0 unless period.valid?
+
     budgets = @repo.all_budgets
     if budgets&.any?
       return period.overlapping_days(budgets.first.budget_period)

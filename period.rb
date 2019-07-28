@@ -8,14 +8,15 @@ class Period
     @end_date = end_date
   end
 
-  def overlapping_days(another)
-    if end_date < another.start_date || start_date > another.end_date
-      return 0.0
-    end
+  def valid?
+    start_date <= end_date
+  end
 
+  def overlapping_days(another)
     overlap_start = [start_date, another.start_date].max
     overlap_end = [end_date, another.end_date].min
-    Period.new(overlap_start, overlap_end).days
+    overlap_period = Period.new(overlap_start, overlap_end)
+    overlap_period.valid? && overlap_period.days || 0.0
   end
 
   def days
