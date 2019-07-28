@@ -10,6 +10,8 @@ class Budget
     daily_amount * period.overlapping_days(budget_period)
   end
 
+  private
+
   def daily_amount
     1.0 * @amount / days
   end

@@ -11,10 +11,9 @@ class BudgetService
     return 0.0 unless period.valid?
 
     budgets = @repo.all_budgets
-    if budgets&.any?
-      return budgets.first.overlapping_amount(period)
-    end
+    return 0.0 unless budgets
 
-    0.0
+    budgets.map { |budget| budget.overlapping_amount(period) }
+           .sum
   end
 end
