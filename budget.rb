@@ -5,4 +5,8 @@ class Budget
     @year_month = year_month
     @amount = amount
   end
+
+  def first_day
+    Date.strptime("#{@year_month}01", '%Y%m%d')
+  end
 end
