@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Period
-  attr_reader :end_date
+  attr_reader :start_date, :end_date
 
   def initialize(start_date, end_date)
     @start_date = start_date
@@ -9,6 +9,6 @@ class Period
   end
 
   def days
-    @end_date - @start_date + 1.0
+    end_date - start_date + 1.0
   end
 end

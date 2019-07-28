@@ -9,4 +9,8 @@ class Budget
   def first_day
     Date.strptime("#{@year_month}01", '%Y%m%d')
   end
+
+  def last_day
+    first_day.next_month - 1
+  end
 end

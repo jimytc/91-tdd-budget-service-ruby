@@ -31,6 +31,11 @@ class BudgetServiceTest < Minitest::Test
     budget_should_be 0.0, date_of('20200331'), date_of('20200331')
   end
 
+  def test_period_no_overlap_after_budget_last_day
+    given_budgets Budget.new('202004', 30)
+    budget_should_be 0.0, date_of('20200501'), date_of('20200501')
+  end
+
   private
 
   def given_budgets(*budgets)
