@@ -8,13 +8,13 @@ class Period
     @end_date = end_date
   end
 
-  def overlapping_days(budget)
-    if end_date < budget.first_day || start_date > budget.last_day
+  def overlapping_days(another)
+    if end_date < another.start_date || start_date > another.end_date
       return 0.0
     end
 
-    overlap_start = [start_date, budget.first_day].max
-    overlap_end = [end_date, budget.last_day].min
+    overlap_start = [start_date, another.start_date].max
+    overlap_end = [end_date, another.end_date].min
     Period.new(overlap_start, overlap_end).days
   end
 

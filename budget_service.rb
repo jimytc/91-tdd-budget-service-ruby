@@ -10,7 +10,7 @@ class BudgetService
     period = Period.new(start_date, end_date)
     budgets = @repo.all_budgets
     if budgets&.any?
-      return period.overlapping_days(budgets.first)
+      return period.overlapping_days(budgets.first.budget_period)
     end
 
     0.0
