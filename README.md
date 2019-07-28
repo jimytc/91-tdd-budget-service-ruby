@@ -3,6 +3,7 @@
 ## Budget Service Kata
 
 Given budgets,
-When query certain period,
-It Should return total amount of budgets among it.
 
+When query certain period,
+
+It Should return total amount of budgets among it.
