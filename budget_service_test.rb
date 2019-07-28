@@ -41,6 +41,11 @@ class BudgetServiceTest < Minitest::Test
     budget_should_be 1.0, date_of('20200430'), date_of('20200501')
   end
 
+  def test_period_cross_budget_month
+    given_budgets Budget.new('202004', 30)
+    budget_should_be 30.0, date_of('20200331'), date_of('20200501')
+  end
+
   private
 
   def given_budgets(*budgets)
